@@ -10,7 +10,7 @@ typedef void(play)(Notes note);
 const static int LEFT_MARGIN = 50;
 const static int TOP_MARGIN = 1;
 const static int WIDTCH = 364;
-const static int HEIGHT = 102;
+const static int HEIGHT = 100;
 
 class CKeyboard : public CWnd
 {

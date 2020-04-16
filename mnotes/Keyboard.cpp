@@ -99,30 +99,31 @@ void CKeyboard::Rectangle(CPaintDC & dc, int x1, int y1, int x2, int y2)
 */
 
 	CPoint points[2];
-	//Top?
+	/* Top */
 	points[0].x = x1;
 	points[0].y = y1;
 	points[1].y = y1;
 	points[1].x = x2;
 	dc.Polyline(points, 2);
-	// right
+	/* Right */
 	points[0].y = y1;
 	points[0].x = x2;
 	points[1].y = y2;
 	points[1].x = x2;
 	dc.Polyline(points, 2);
-	// bottom
-	points[0].x = x1;
-	points[0].y = y2;
-	points[1].x = x2;
-	points[1].y = y2;
-	dc.Polyline(points, 2);
-	// left
+	/* Left */
 	points[0].x = x1;
 	points[0].y = y1;
 	points[1].x = x1;
 	points[1].y = y2;
 	dc.Polyline(points, 2);
+/* Bottom */
+	points[0].x = x1;
+	points[0].y = y2;
+	points[1].y = y2;
+	points[1].x = x2;
+	dc.Polyline(points, 2);
+
 }
 
 void CKeyboard::DrawKey(const int number, CPaintDC & dc)
@@ -134,16 +135,6 @@ void CKeyboard::DrawKey(const int number, CPaintDC & dc)
 	brush.CreateSolidBrush(RGB(255, 255, 255));
 	dc.SelectObject(brush);
 
-/*
-	CPoint points[2];
-	points[0] = CPoint(LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1), TOP_MARGIN);
-	points[1] = CPoint(LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1), TOP_MARGIN + HEIGHT);
-	dc.Polyline(points, 2);
-	*/
-//	if (number == 0)
-//		dc.Rectangle(0, TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH, TOP_MARGIN + HEIGHT);
-//	else
-//		dc.Rectangle(LEFT_MARGIN + CKeyboard::KEY_WIDTCH*(number - 1) , TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1) + CKeyboard::KEY_WIDTCH , TOP_MARGIN + HEIGHT);
 		Rectangle(dc,LEFT_MARGIN + CKeyboard::KEY_WIDTCH*(number - 1), TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1) + CKeyboard::KEY_WIDTCH, TOP_MARGIN + HEIGHT);
 
 }
@@ -193,7 +184,7 @@ void CKeyboard::OnPaint()
 //	WIDTCH = rect.right;
 //	HEIGHT = rect.bottom;
 
-	
+/*
 	CPoint points[2];
 	points[0] = CPoint(LEFT_MARGIN, TOP_MARGIN);
 	points[1] = CPoint(LEFT_MARGIN + WIDTCH, TOP_MARGIN);
@@ -201,7 +192,7 @@ void CKeyboard::OnPaint()
 	points[0] = CPoint(LEFT_MARGIN, TOP_MARGIN + HEIGHT);
 	points[1] = CPoint(LEFT_MARGIN + WIDTCH, TOP_MARGIN + HEIGHT);
 	dc.Polyline(points, 2);
-	
+*/	
 	DrawKeys(dc);
 
 }
