@@ -89,6 +89,42 @@ void CKeyboard::OnLButtonDblClk(UINT nFlags, CPoint point)
 
 
 
+void CKeyboard::Rectangle(CPaintDC & dc, int x1, int y1, int x2, int y2)
+{
+/*
+	CPen pen;
+	pen.CreatePen(PS_SOLID, 0, RGB(255, 255, 255));
+	dc.SelectObject(&pen);
+	dc.Rectangle(x1, y1, x2, y2);
+*/
+
+	CPoint points[2];
+	//Top?
+	points[0].x = x1;
+	points[0].y = y1;
+	points[1].y = y1;
+	points[1].x = x2;
+	dc.Polyline(points, 2);
+	// right
+	points[0].y = y1;
+	points[0].x = x2;
+	points[1].y = y2;
+	points[1].x = x2;
+	dc.Polyline(points, 2);
+	// bottom
+	points[0].x = x1;
+	points[0].y = y2;
+	points[1].x = x2;
+	points[1].y = y2;
+	dc.Polyline(points, 2);
+	// left
+	points[0].x = x1;
+	points[0].y = y1;
+	points[1].x = x1;
+	points[1].y = y2;
+	dc.Polyline(points, 2);
+}
+
 void CKeyboard::DrawKey(const int number, CPaintDC & dc)
 {
 	CPen pen;
@@ -107,7 +143,9 @@ void CKeyboard::DrawKey(const int number, CPaintDC & dc)
 //	if (number == 0)
 //		dc.Rectangle(0, TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH, TOP_MARGIN + HEIGHT);
 //	else
-		dc.Rectangle(LEFT_MARGIN + CKeyboard::KEY_WIDTCH*(number - 1) , TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1) + CKeyboard::KEY_WIDTCH , TOP_MARGIN + HEIGHT);
+//		dc.Rectangle(LEFT_MARGIN + CKeyboard::KEY_WIDTCH*(number - 1) , TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1) + CKeyboard::KEY_WIDTCH , TOP_MARGIN + HEIGHT);
+		Rectangle(dc,LEFT_MARGIN + CKeyboard::KEY_WIDTCH*(number - 1), TOP_MARGIN, LEFT_MARGIN + CKeyboard::KEY_WIDTCH *(number - 1) + CKeyboard::KEY_WIDTCH, TOP_MARGIN + HEIGHT);
+
 }
 
 void CKeyboard::DrawKeys(CPaintDC& dc)

@@ -61,13 +61,17 @@ CmnotesDlg::CmnotesDlg(int pause, CWnd* pParent)
 
 void CmnotesDlg::Play(Notes note)
 {
+	if (!m_Played)
+	{
 		m_Led.m_value = m_Pane.m_note == m_Keyboard.m_Note;
 		if (m_Led.m_value)
 			m_GoodCount++;
 		else
 			m_BadCount++;
 		m_Led.RedrawWindow();
+		m_Played = true;
 		UpdateData(false);
+	}
 }
 
 void CmnotesDlg::setOctaves(int octaves)
@@ -203,6 +207,7 @@ void CmnotesDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  this is automatically done for you by the framework.
 
 void CmnotesDlg::OnTimer(UINT time){
+	m_Played = false;
 //	CmnotesDlg::RedrawWindow();
 	m_Pane.OnTimer(time);
 	m_Keyboard.OnTimer(time);

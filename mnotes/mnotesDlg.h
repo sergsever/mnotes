@@ -27,6 +27,7 @@ public:
 
 	protected:
 	HICON m_hIcon;
+	bool		m_Played;
 	int			m_Pause;
 	int         m_Octaves;
 	CNotePane	m_Pane;

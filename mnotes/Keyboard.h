@@ -33,6 +33,7 @@ public:
 protected:
 	int m_KeyNumber;
 	int m_Octaves;
+	void CKeyboard::Rectangle(CPaintDC & dc, int x1, int y1, int x2, int y2);
 	void CKeyboard::DrawKey(const int number, CPaintDC& dc);
 	void CKeyboard::DrawKeys(CPaintDC& dc);
 	void CKeyboard::DrawBlackKey(const int number, CPaintDC& dc);
