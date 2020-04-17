@@ -91,12 +91,15 @@ void CKeyboard::OnLButtonDblClk(UINT nFlags, CPoint point)
 
 void CKeyboard::Rectangle(CPaintDC & dc, int x1, int y1, int x2, int y2)
 {
-/*
+
 	CPen pen;
 	pen.CreatePen(PS_SOLID, 0, RGB(255, 255, 255));
 	dc.SelectObject(&pen);
 	dc.Rectangle(x1, y1, x2, y2);
-*/
+
+	CPen forlines;
+	forlines.CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
+	dc.SelectObject(&forlines);
 
 	CPoint points[2];
 	/* Top */
