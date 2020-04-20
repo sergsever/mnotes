@@ -1,5 +1,6 @@
 #pragma once
 #include <set>
+#pragma once
 #include "NotesEnum.h"
 #include "CPlayer.h"
 

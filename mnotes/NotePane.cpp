@@ -79,7 +79,7 @@ void CNotePane::OnPaint()
 void CNotePane::OnTimer(UINT_PTR idTimer){
 
 
-	m_note = RandNote();
+	m_note = getNote();
 	this->RedrawWindow();
 	HRESULT res = PlaySound(sounds[m_note], NULL, SND_FILENAME);
 }
@@ -98,30 +98,19 @@ void CNotePane::setOctaves(int octaves)
 	}
 }
 
-Notes CNotePane::RandNote(){
-	Notes ret;
-	int rnd = std::rand();
-	TRACE1("std::rand:%d\n", rnd);
-//	Notes ret = static_cast<Notes>((int)(std::rand()% KEY_NUMBER + 1));//static_cast<Notes>((int)(7 * rand() / (RAND_MAX + 1.0)));
-	ret = static_cast<Notes>(rnd % m_KeyNumber + 1);
-	TRACE1("Rand:%d\n", ret);
-
-	if (ret > Si2 || ret < Do){
-		wchar_t message[200];
-		wsprintf(message, _T("Note is not in diapasone:%d"), ret);
-		MessageBox(NULL, (LPCTSTR)message, MB_ICONWARNING | MB_CANCELTRYCONTINUE | MB_DEFBUTTON2);
-	}
-	return ret;
-}
-
-Notes CNotePane::NextNote(){
-	Notes ret = m_note;
-	if (ret < Si)
-		ret = static_cast<Notes>(ret + 1);
+void CNotePane::setMode(const int mode)
+{
+	if (mode)
+		generator = new TeacherGenerator(m_KeyNumber);
 	else
-		ret = Do;
-	return ret;
+		generator = new RandomNotesGenerator(m_KeyNumber);
 }
+
+Notes CNotePane::getNote(){
+	
+	return generator->getNote();
+}
+
 /*
 BOOL CNotePane::OnEraseBkgnd(CDC *pDC){
 	return CWnd::OnEraseBkgnd(pDC);

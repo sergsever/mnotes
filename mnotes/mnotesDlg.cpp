@@ -81,6 +81,12 @@ void CmnotesDlg::setOctaves(int octaves)
 	m_Pane.setOctaves(octaves);
 }
 
+void CmnotesDlg::setMode(const int mode)
+{
+	m_TeacherMode = mode;
+	m_Pane.setMode(mode);
+}
+
 void CmnotesDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);

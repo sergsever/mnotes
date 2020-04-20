@@ -3,7 +3,8 @@
 
 #include <map>
 #include <tchar.h>
-
+#include "RandomNotesGenerator.h"
+#include "TeacherGenerator.h"
 #ifndef NOTE_PANE_H
 #define NOTE_PANE_H
 #define NOTE_PANEL_CLASS _T("CNotePane")
@@ -20,17 +21,20 @@ public:
 	void OnTimer(UINT_PTR idTimer);
 	Notes m_note;
 	void setOctaves(int octaves);
+	void setMode(const int mode);
 
 protected:
+	NotesGenerator* generator;
 	int m_octaves = 1;
+	int m_TeacherMode = 0;
 	int m_KeyNumber = 7;
 	//{{AFX_MSG(MyCustomControl)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void CNotePane::OnPaint();
 	//}}AFX_MSG
 
-	Notes NextNote();
-	Notes RandNote();
+//	Notes NextNote();
+	Notes getNote();
 	BOOL Create(CWnd* pParentWnd, const RECT& rect, UINT nID, DWORD dwStyle);
 
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);

@@ -1,5 +1,8 @@
 #pragma once
-
+/*
+#ifndef NOTES_ENUM
+#define NOTES_ENUM
+*/
 const static int KEY_NUMBER = 14;
 
 enum Notes {
@@ -19,3 +22,8 @@ enum Notes {
 	La2 = 13,
 	Si2 = 14
 };
+
+#ifndef _OPERATOR
+#define _OPERATOR 1
+
+#endif

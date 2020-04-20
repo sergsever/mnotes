@@ -37,6 +37,7 @@
 #include <map>
 #include "mmsystem.h"
 #include "Windows.h"
+#include "NotesEnum.h"
 
 
 

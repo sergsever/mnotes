@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "mnotes.h"
-#include "NotesEnum.h"
+//#include "NotesEnum.h"
 #include "NotePane.h"
 #include "mnotesDlg.h"
 //#include "CustomControlDlg.h"
@@ -67,9 +67,11 @@ BOOL CmnotesApp::InitInstance()
 //	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 	int pause = GetPrivateProfileInt(L"mnotes", L"pause", 0, L"C:\\mnotes\\mnotes.ini");
 	int octaves = GetPrivateProfileInt(L"mnotes", L"octaves", 0, L"C:\\mnotes\\mnotes.ini");
+	int teacher = GetPrivateProfileInt(L"mnotes", L"teacher", 0, L"C:\\mnotes\\mnotes.ini");
 
 	CmnotesDlg dlg(pause, NULL);
 	dlg.setOctaves(octaves);
+	dlg.setMode(teacher);
 //	dlg.DoModal();
 //	dlg.Create(IDD_MNOTES_DIALOG, NULL);
 //  dlg.ShowWindow(SW_NORMAL);

@@ -21,6 +21,7 @@ public:
 	CmnotesDlg(int pause, CWnd* pParent = NULL);	// standard constructor
 	void Play(Notes note);
 	void setOctaves(int octaves);
+	void setMode(const int mode);
 
 // Dialog Data
 	enum { IDD = IDD_MNOTES_DIALOG };
@@ -30,6 +31,7 @@ public:
 	bool		m_Played;
 	int			m_Pause;
 	int         m_Octaves;
+	int			m_TeacherMode;
 	CNotePane	m_Pane;
 	CKeyboard	m_Keyboard;
 	CStatic		m_Good;
